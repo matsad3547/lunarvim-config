@@ -15,10 +15,14 @@ vim.keymap.set('n', 'L', ':bnext <CR>')
 vim.keymap.set('n', 'H', ':bprevious <CR>')
 
 -- close buffer
-vim.keymap.set('n', '<leader> bd', ':BufferKill <CR>')
+vim.keymap.set('n', '<Space>bd', ':BufferKill <CR>')
 
 -- Find the key for these mappings using `:nmap`
 lvim.keys.normal_mode["<Space>c"] = false
+
+vim.keymap.set('n', '<Space>er', function ()
+  vim.diagnostic.goto_next()
+end)
 
 -- For Apple terminal
 vim.opt.termguicolors = false
