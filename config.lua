@@ -7,6 +7,10 @@
 lvim.colorscheme = "catppuccin-mocha"
 
 -- Key Mappings
+-- Default Removals - find the key for these mappings using `:nmap`
+lvim.keys.normal_mode["<Space>c"] = false
+lvim.keys.normal_mode["<Space>f"] = false
+
 -- 'jk' to exit insert mode and here
 vim.keymap.set('i', 'jk', '<Esc>')
 
@@ -17,15 +21,19 @@ vim.keymap.set('n', 'H', ':bprevious <CR>')
 -- close buffer
 vim.keymap.set('n', '<Space>bd', ':BufferKill <CR>')
 
--- Find the key for these mappings using `:nmap`
-lvim.keys.normal_mode["<Space>c"] = false
-
-vim.keymap.set('n', '<Space>er', function ()
+-- Go to next error
+vim.keymap.set('n', '<Space>ge', function ()
   vim.diagnostic.goto_next()
 end)
 
--- For Apple terminal
-vim.opt.termguicolors = false
+-- Search for files
+vim.keymap.set('n', '<Space>ff', ':Telescope find_files <CR>')
+-- Search for text across files  
+vim.keymap.set('n', '<Space>ft', ':Telescope live_grep <CR>')
+
+lvim.builtin.nvimtree.setup.view.width = 50
+vim.opt.linebreak = true
+vim.opt.wrap = true
 
 lvim.plugins = {
   -- colorschemes 
